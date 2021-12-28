@@ -2,10 +2,10 @@
 
 ## Usage:
 ```bash
-$ gcc main.c -o main && ./main -p 8050
+$ make build && ./server -p 8080
 ```
 ```c
-tcp server started on: [:8050]
+tcp server started on: [:8080]
 got message from client: f you
 ```
 
