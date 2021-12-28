@@ -11,7 +11,7 @@
 #define MAX_BUF_SIZE 30000
 #define sockaddr_in struct sockaddr_in
 #define sockaddr struct sockaddr
-#define forever ;;
+#define forever for (;;)
 
 int create_tcp_socket();
 sockaddr_in* get_tcp_addr(int);
@@ -54,8 +54,6 @@ int main(int argc, char **argv) {
     goto free_addr;
   }
 
-  char* hello = "hello from server";
-  
   printf("tcp server started on: [:%d]\n", port);
   if (handle_conns(soc, (sockaddr*)addr, (socklen_t*)&addr_len) < 0) {
     perror("handle server connections");
@@ -87,7 +85,7 @@ int handle_conns(int soc, sockaddr* addr, socklen_t* addr_len) {
   long count_bytes;
   char* hello = "hello from server";
 
-  for (forever) {
+  forever {
     char buf[MAX_BUF_SIZE] = {0};
     
     if ((in_soc = accept(soc, addr, addr_len)) < 0) {
